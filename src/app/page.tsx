@@ -23,7 +23,6 @@ interface ExperienceItem {
   description: string
 }
 
-// Fetch data langsung di Server Vercel (Super Ngebut, Caching ISR 60s)
 async function getData() {
   const mediaQuery = `*[_type == "mediaItem"] | order(date desc, _createdAt desc) {
     _id,
@@ -81,14 +80,14 @@ export default async function HomePage() {
     }
   }
 
-  const getYouTubeId = (url?: string) => {
+  const getYouTubeId = (url?: string): string | null => {
     if (!url) return null
     const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
     const match = url.match(regExp)
     return match && match[1].length === 11 ? match[1] : null
   }
 
-  const getYouTubeThumbnail = (url?: string) => {
+  const getYouTubeThumbnail = (url?: string): string | null => {
     const videoId = getYouTubeId(url)
     return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null
   }
@@ -128,7 +127,7 @@ export default async function HomePage() {
     },
   ]
 
-  const displayExperiences = experiences.length > 0 ? experiences : defaultExperiences
+  const displayExperiences: ExperienceItem[] = experiences.length > 0 ? experiences : defaultExperiences
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
@@ -241,7 +240,7 @@ export default async function HomePage() {
               <div className="bg-white/[0.03] border border-white/15 hover:border-orange-500/40 rounded-2xl p-5 backdrop-blur-2xl backdrop-saturate-150 space-y-3 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition duration-500">
                 <h3 className="text-xs font-semibold tracking-wider text-orange-400 uppercase border-b border-white/10 pb-2">Skills & Software</h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {['Art Direction', 'Photography', 'Cinematography', 'Graphic Design', 'Video Editing', 'Premiere Pro', 'Photoshop', 'Illustrator', 'Figma', 'Canva'].map((skill, i) => (
+                  {['Art Direction', 'Photography', 'Cinematography', 'Graphic Design', 'Video Editing', 'Premiere Pro', 'Photoshop', 'Illustrator', 'Figma', 'Canva'].map((skill: string, i: number) => (
                     <span key={i} className="text-[10px] bg-orange-500/10 border border-orange-500/25 text-neutral-200 px-2.5 py-1 rounded-full backdrop-blur-md">
                       {skill}
                     </span>
@@ -258,7 +257,7 @@ export default async function HomePage() {
           <h2 className="text-2xl font-bold mb-10 text-white tracking-tight">Experience & Roles</h2>
 
           <div className="space-y-6">
-            {displayExperiences.map((exp) => (
+            {displayExperiences.map((exp: ExperienceItem) => (
               <div
                 key={exp._id}
                 className="bg-white/[0.03] border border-white/15 hover:border-orange-500/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 backdrop-blur-2xl backdrop-saturate-150 transition duration-500 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:shadow-[0_8px_32px_0_rgba(249,115,22,0.15)]"
@@ -276,7 +275,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 4. SELECTED WORKS GRID (Lengkap dengan thumbnail YouTube & Gallery) */}
+        {/* 4. SELECTED WORKS GRID */}
         <section className="max-w-6xl mx-auto px-6 md:px-12 py-20 border-t border-white/10">
           <div className="mb-8">
             <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase">Portfolio</span>
@@ -289,12 +288,11 @@ export default async function HomePage() {
             <p className="text-neutral-500">Belum ada karya.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mediaItems.map((item) => {
+              {mediaItems.map((item: MediaItem) => {
                 const displayImg = item.coverImage || item.image
                 const ytThumbnail = getYouTubeThumbnail(item.videoUrl)
                 const hasVideo = Boolean(item.videoUrl)
 
-                // Gambar dikompres otomatis super ringan (~40KB) via Sanity CDN
                 const imageSrc = displayImg
                   ? urlFor(displayImg).width(500).format('webp').quality(70).url()
                   : ytThumbnail
@@ -360,7 +358,7 @@ export default async function HomePage() {
 
                       {item.tags && item.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/5">
-                          {item.tags.map((tag, idx) => (
+                          {item.tags.map((tag: string, idx: number) => (
                             <span
                               key={idx}
                               className="text-[10px] bg-white/5 text-neutral-300 px-2.5 py-0.5 rounded-full border border-white/5"
