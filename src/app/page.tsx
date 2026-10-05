@@ -178,18 +178,11 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* SOFT SLOW BREATHING / REDUP-NYALA AMBIENT BLOBS */}
+      {/* SOFT SLOW BREATHING AMBIENT BLOBS */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Breathing Orb 1 - Top Center */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] md:w-[850px] h-[450px] bg-gradient-to-b from-orange-500/25 via-amber-600/15 to-transparent rounded-full blur-[140px] animate-pulse duration-[7000ms]" />
-        
-        {/* Breathing Orb 2 - Left Mid */}
         <div className="absolute top-[35%] -left-32 w-[500px] md:w-[600px] h-[500px] bg-gradient-to-tr from-orange-600/20 via-amber-500/10 to-transparent rounded-full blur-[150px] animate-pulse duration-[9000ms]" />
-        
-        {/* Breathing Orb 3 - Right Mid */}
         <div className="absolute top-[60%] -right-32 w-[550px] md:w-[650px] h-[550px] bg-gradient-to-bl from-amber-500/20 via-orange-500/15 to-transparent rounded-full blur-[150px] animate-pulse duration-[8000ms]" />
-
-        {/* Breathing Orb 4 - Bottom Accent */}
         <div className="absolute top-[85%] left-1/3 w-[600px] h-[400px] bg-gradient-to-t from-orange-500/15 via-amber-600/10 to-transparent rounded-full blur-[160px] animate-pulse duration-[10000ms]" />
       </div>
 
@@ -206,9 +199,9 @@ export default function HomePage() {
                   src="/profile.png"
                   alt="Adlan Aryasatya"
                   fill
+                  sizes="96px"
                   className="object-cover object-top scale-125 pt-2"
                   priority
-                  unoptimized
                 />
               </div>
             </div>
@@ -252,9 +245,9 @@ export default function HomePage() {
               src="/profile.png"
               alt="Adlan Aryasatya"
               fill
+              sizes="(max-width: 1200px) 320px, 420px"
               className="object-contain pointer-events-none drop-shadow-2xl"
               priority
-              unoptimized
             />
           </div>
 
@@ -370,8 +363,9 @@ export default function HomePage() {
                 const ytThumbnail = getYouTubeThumbnail(item.videoUrl)
                 const hasVideo = Boolean(item.videoUrl)
 
+                // OPTIMATED: Menggunakan w=600 & q=75 untuk thumbnail grid ringan di HP (~60KB)
                 const imageSrc = displayImg
-                  ? urlFor(displayImg).width(800).format('webp').quality(80).url()
+                  ? urlFor(displayImg).width(600).format('webp').quality(75).url()
                   : ytThumbnail
 
                 return (
@@ -394,7 +388,6 @@ export default function HomePage() {
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition duration-700 ease-out pointer-events-none"
-                          unoptimized={Boolean(!displayImg && ytThumbnail)}
                         />
 
                         {/* SUBTLE MINIMALIST WATERMARK OVERLAY */}
@@ -511,9 +504,10 @@ export default function HomePage() {
                   >
                     {currentImages[activeImageIndex] && (
                       <Image
-                        src={urlFor(currentImages[activeImageIndex]).width(1600).format('webp').quality(85).url()}
+                        src={urlFor(currentImages[activeImageIndex]).width(1200).format('webp').quality(80).url()}
                         alt={selectedProject.title}
                         fill
+                        sizes="(max-width: 1200px) 100vw, 1200px"
                         className="object-contain pointer-events-none"
                       />
                     )}
@@ -546,9 +540,10 @@ export default function HomePage() {
                       }`}
                     >
                       <Image
-                        src={urlFor(img).width(200).format('webp').quality(75).url()}
+                        src={urlFor(img).width(150).format('webp').quality(70).url()}
                         alt="thumbnail"
                         fill
+                        sizes="64px"
                         className="object-cover pointer-events-none"
                       />
                     </button>
