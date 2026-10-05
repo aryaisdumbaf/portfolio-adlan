@@ -35,12 +35,13 @@ export default function HomePage() {
 
   useEffect(() => {
     async function fetchData() {
+      // GROQ query teroptimasi (hanya mengambil atribut asset gambar yang dibutuhkan)
       const mediaQuery = `*[_type == "mediaItem"] | order(date desc, _createdAt desc) {
         _id,
         title,
-        coverImage,
-        image,
-        gallery,
+        coverImage { asset },
+        image { asset },
+        gallery[] { asset },
         videoUrl,
         "categoryTitle": category->title,
         tags,
@@ -57,9 +58,10 @@ export default function HomePage() {
       }`
 
       try {
+        // Menggunakan caching ISR (revalidate 60s) agar loading di HP super cepat & instan
         const [mediaData, expData] = await Promise.all([
-          client.fetch(mediaQuery, {}, { cache: 'no-store' }),
-          client.fetch(expQuery, {}, { cache: 'no-store' }),
+          client.fetch(mediaQuery, {}, { next: { revalidate: 60 } }),
+          client.fetch(expQuery, {}, { next: { revalidate: 60 } }),
         ])
         setMediaItems(mediaData)
         setExperiences(expData)
@@ -363,7 +365,7 @@ export default function HomePage() {
                 const ytThumbnail = getYouTubeThumbnail(item.videoUrl)
                 const hasVideo = Boolean(item.videoUrl)
 
-                // OPTIMATED: Menggunakan w=600 & q=75 untuk thumbnail grid ringan di HP (~60KB)
+                // OPTIMIZED: w=600 & q=75 untuk thumbnail grid super ringan di HP (~50-80KB)
                 const imageSrc = displayImg
                   ? urlFor(displayImg).width(600).format('webp').quality(75).url()
                   : ytThumbnail
