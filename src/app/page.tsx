@@ -195,7 +195,7 @@ export default function HomePage() {
             <div className="md:hidden relative w-24 h-24 rounded-full p-1 bg-gradient-to-b from-orange-500/40 to-amber-500/10 border border-orange-500/30 shadow-[0_0_20px_rgba(249,115,22,0.2)] mb-1">
               <div className="relative w-full h-full rounded-full overflow-hidden bg-neutral-900">
                 <Image
-                  src="/profile.png"
+                  src="/profile.webp"
                   alt="Adlan Aryasatya"
                   fill
                   sizes="96px"
@@ -240,7 +240,7 @@ export default function HomePage() {
           <div className="hidden md:flex relative w-80 h-[480px] lg:w-[420px] lg:h-[520px] shrink-0 items-center justify-center z-10">
             <div className="absolute inset-4 bg-orange-500/15 rounded-full blur-3xl -z-10" />
             <Image
-              src="/profile.png"
+              src="/profile.webp"
               alt="Adlan Aryasatya"
               fill
               sizes="(max-width: 1200px) 320px, 420px"
