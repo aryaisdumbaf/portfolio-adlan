@@ -61,10 +61,19 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* MONOCHROME GLASSMORPHISM BACKGROUND */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
-        <Image alt="Glassmorphism Background" className="object-cover" fill priority src="/glass-bg.webp"/>
-      </div>
+      {/* PURE CSS REEDED GLASS BACKGROUND (0 KB, No Image Needed, Responsive Portrait & Landscape) */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 opacity-15"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.08) 0px,
+            rgba(255, 255, 255, 0.08) 2px,
+            transparent 2px,
+            transparent 8px
+          ), radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%)`
+        }}
+      />
 
       <div className="relative z-10">
         
@@ -75,7 +84,14 @@ export default async function HomePage() {
             {/* AVATAR MOBILE */}
             <div className="md:hidden relative w-24 h-24 rounded-full p-1 bg-neutral-800 border border-white/20 shadow-xl mb-1">
               <div className="relative w-full h-full rounded-full overflow-hidden bg-neutral-900">
-                <Image alt="Adlan Aryasatya" className="object-cover object-top scale-125 pt-2" fill priority sizes="96px" src="/profile.webp"/>
+                <Image
+                  src="/profile.webp"
+                  alt="Adlan Aryasatya"
+                  fill
+                  sizes="96px"
+                  className="object-cover object-top scale-125 pt-2"
+                  priority
+                />
               </div>
             </div>
 
@@ -112,7 +128,14 @@ export default async function HomePage() {
 
           {/* FOTO PROFIL DESKTOP */}
           <div className="hidden md:flex relative w-80 h-[480px] lg:w-[420px] lg:h-[520px] shrink-0 items-center justify-center z-10">
-            <Image alt="Adlan Aryasatya" className="object-contain pointer-events-none drop-shadow-2xl" fill priority sizes="(max-width: 1200px) 320px, 420px" src="/profile.webp"/>
+            <Image
+              src="/profile.webp"
+              alt="Adlan Aryasatya"
+              fill
+              sizes="(max-width: 1200px) 320px, 420px"
+              className="object-contain pointer-events-none drop-shadow-2xl"
+              priority
+            />
           </div>
         </section>
 
