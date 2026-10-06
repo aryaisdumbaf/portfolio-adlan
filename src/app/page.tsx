@@ -61,7 +61,7 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* HIGH-END EDITORIAL MONOCHROME BACKGROUND (0 KB, 0 GPU Blur, Super Smooth) */}
+      {/* HIGH-END EDITORIAL MONOCHROME BACKGROUND */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Subtle Radial Spotlight */}
         <div 
