@@ -185,7 +185,7 @@ export default async function HomePage() {
         </section>
 
         {/* PORTFOLIO GRID */}
-        <PortfolioGrid mediaItems="{mediaItems}"/>
+        <PortfolioGrid mediaItems={mediaItems} />
 
         {/* FOOTER */}
         <footer className="border-t border-white/10 py-12 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500">
