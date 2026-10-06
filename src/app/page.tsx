@@ -54,7 +54,7 @@ export default async function HomePage() {
 
   const phoneNumber = '6281312811549'
   const defaultMessage = encodeURIComponent(
-    'Halo Arya, saya lihat portofolio kamu dan tertarik untuk berdiskusi/kerjasama.'
+    "Hello Arya, I saw your portfolio and I'm interested in collaborating with you."
   )
   const waLink = `https://wa.me/${phoneNumber}?text=${defaultMessage}`
 
@@ -91,7 +91,7 @@ export default async function HomePage() {
           }}
         />
 
-        {/* FINE GRAIN NOISE OVERLAY (Murni CSS, Bintik Sangat Kecil, Rapat & Halus) */}
+        {/* Fine Grain Noise Overlay */}
         <div 
           className="absolute inset-0 z-20 opacity-[0.02]"
           style={{
@@ -132,7 +132,7 @@ export default async function HomePage() {
             </h1>
 
             <p className="text-neutral-300/80 text-sm md:text-lg max-w-xl leading-relaxed">
-              I don&apos;t just stay in one place. From drafting concepts, stepping onto the field as camera operator, to post-production editing suite.
+              I&apos;m Arya. From drafting design concepts and stepping onto the field as a camera operator to assembling frames in the editing suite, I prefer to oversee the entire visual process.
             </p>
 
             <div className="pt-2 flex justify-center md:justify-start items-center w-full sm:w-auto">
@@ -142,7 +142,7 @@ export default async function HomePage() {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-neutral-200 font-semibold px-9 py-4 rounded-full transition duration-300 text-sm sm:text-base shadow-[0_0_25px_rgba(255,255,255,0.2)]"
               >
-                <span>Mari Berdiskusi</span>
+                <span>Let&apos;s Talk</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
@@ -194,7 +194,7 @@ export default async function HomePage() {
               <div className="bg-neutral-900/90 border border-white/10 rounded-2xl p-5 space-y-3 shadow-lg">
                 <h3 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase border-b border-white/10 pb-2">Skills & Software</h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {['Art Direction', 'Photography', 'Cinematography', 'Graphic Design', 'Video Editing', 'Premiere Pro', 'Photoshop', 'Illustrator', 'Figma', 'Canva'].map((skill, i) => (
+                  {['Art Direction', 'Photography', 'Cinematography', 'Graphic Design', 'Video Editing', 'Content Creation', 'Premiere Pro', 'Photoshop', 'Illustrator', 'Figma', 'Canva'].map((skill, i) => (
                     <span key={i} className="text-[10px] bg-white/5 border border-white/15 text-neutral-300 px-2.5 py-1 rounded-full">
                       {skill}
                     </span>
