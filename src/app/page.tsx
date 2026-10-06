@@ -61,30 +61,33 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* HIGH-END EDITORIAL MONOCHROME BACKGROUND */}
+      {/* ZERO-LAG LIGHTWEIGHT RADIAL GLOWS (Sama indahnya dengan blur, tapi 100% enteng di HP) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Subtle Radial Spotlight */}
+        {/* Glow Atas Tengah (Warm Monochrome White/Amber) */}
         <div 
-          className="absolute inset-0 opacity-40"
+          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] md:w-[900px] h-[500px] opacity-25"
           style={{
-            background: 'radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 60%)'
+            background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(249,115,22,0.12) 35%, transparent 70%)'
           }}
         />
 
-        {/* Large Editorial Watermark Typography */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[18vw] font-black tracking-tighter text-white/[0.02] select-none leading-none">
-          ARCHIVES
-        </div>
-
-        {/* Fine Architectural Grid & Guides */}
+        {/* Glow Samping Kiri Tengah */}
         <div 
-          className="absolute inset-0 opacity-15"
+          className="absolute top-[40%] -left-40 w-[500px] md:w-[700px] h-[500px] opacity-20"
+          style={{
+            background: 'radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(255,255,255,0.05) 40%, transparent 70%)'
+          }}
+        />
+
+        {/* Textured Grid Overlay Halus */}
+        <div 
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
             `,
-            backgroundSize: '64px 64px'
+            backgroundSize: '40px 40px'
           }}
         />
       </div>
@@ -96,7 +99,7 @@ export default async function HomePage() {
           <div className="flex-1 space-y-6 text-center md:text-left z-10 flex flex-col items-center md:items-start justify-center my-auto">
             
             {/* AVATAR MOBILE */}
-            <div className="md:hidden relative w-24 h-24 rounded-full p-1 bg-neutral-800 border border-white/20 shadow-xl mb-1">
+            <div className="md:hidden relative w-24 h-24 rounded-full p-1 bg-gradient-to-b from-orange-500/40 to-amber-500/10 border border-orange-500/30 shadow-[0_0_20px_rgba(249,115,22,0.2)] mb-1">
               <div className="relative w-full h-full rounded-full overflow-hidden bg-neutral-900">
                 <Image
                   src="/profile.webp"
@@ -109,10 +112,9 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/20 text-neutral-300 text-xs font-mono tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-semibold tracking-widest uppercase">
               Art Director & Visual Creator
-            </div>
+            </span>
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
               Hello There!<br />
@@ -130,7 +132,7 @@ export default async function HomePage() {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-neutral-200 font-semibold px-9 py-4 rounded-full transition duration-300 text-sm sm:text-base shadow-2xl"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold px-9 py-4 rounded-full transition duration-300 text-sm sm:text-base shadow-[0_0_20px_rgba(249,115,22,0.3)]"
               >
                 <span>Mari Berdiskusi</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -143,6 +145,7 @@ export default async function HomePage() {
 
           {/* FOTO PROFIL DESKTOP */}
           <div className="hidden md:flex relative w-80 h-[480px] lg:w-[420px] lg:h-[520px] shrink-0 items-center justify-center z-10">
+            <div className="absolute inset-4 bg-orange-500/15 rounded-full blur-2xl -z-10" />
             <Image
               src="/profile.webp"
               alt="Adlan Aryasatya"
@@ -158,7 +161,7 @@ export default async function HomePage() {
         <section className="max-w-6xl mx-auto px-6 md:px-12 py-16 border-t border-white/10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-6 space-y-4">
-              <span className="text-xs font-mono font-semibold tracking-widest text-neutral-400 uppercase">// ABOUT ME</span>
+              <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase">About Me</span>
               <h2 className="text-2xl md:text-3xl font-bold text-white">The Arya&apos;s Archives</h2>
               <p className="text-neutral-300/80 text-sm md:text-base leading-relaxed">
                 To me, a great visual piece is not just about camera specs or design aesthetics. It is about how all those elements come together to deliver a powerful story.
@@ -166,9 +169,8 @@ export default async function HomePage() {
             </div>
 
             <div className="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="relative bg-neutral-900/90 border border-white/10 rounded-2xl p-5 space-y-3 shadow-xl">
-                <span className="absolute top-3 right-3 text-[10px] font-mono text-neutral-600">01</span>
-                <h3 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase border-b border-white/10 pb-2">Education</h3>
+              <div className="bg-neutral-900/90 border border-white/15 rounded-2xl p-5 space-y-3 shadow-lg">
+                <h3 className="text-xs font-semibold tracking-wider text-orange-400 uppercase border-b border-white/10 pb-2">Education</h3>
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="text-white font-medium">Telkom University</p>
@@ -181,12 +183,11 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div className="relative bg-neutral-900/90 border border-white/10 rounded-2xl p-5 space-y-3 shadow-xl">
-                <span className="absolute top-3 right-3 text-[10px] font-mono text-neutral-600">02</span>
-                <h3 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase border-b border-white/10 pb-2">Skills & Software</h3>
+              <div className="bg-neutral-900/90 border border-white/15 rounded-2xl p-5 space-y-3 shadow-lg">
+                <h3 className="text-xs font-semibold tracking-wider text-orange-400 uppercase border-b border-white/10 pb-2">Skills & Software</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {['Art Direction', 'Photography', 'Cinematography', 'Graphic Design', 'Video Editing', 'Premiere Pro', 'Photoshop', 'Illustrator', 'Figma', 'Canva'].map((skill, i) => (
-                    <span key={i} className="text-[10px] bg-white/5 border border-white/15 text-neutral-300 px-2.5 py-1 rounded-full">
+                    <span key={i} className="text-[10px] bg-orange-500/10 border border-orange-500/25 text-neutral-200 px-2.5 py-1 rounded-full">
                       {skill}
                     </span>
                   ))}
@@ -198,27 +199,24 @@ export default async function HomePage() {
 
         {/* EXPERIENCES */}
         <section className="max-w-6xl mx-auto px-6 md:px-12 py-16 border-t border-white/10">
-          <span className="text-xs font-mono font-semibold tracking-widest text-neutral-400 uppercase">// TRACK RECORD</span>
+          <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase">Track Record</span>
           <h2 className="text-2xl font-bold mb-10 text-white tracking-tight">Experience & Roles</h2>
 
           {experiences.length === 0 ? (
             <p className="text-neutral-500 text-sm">Belum ada pengalaman yang dimasukkan di Sanity Studio.</p>
           ) : (
             <div className="space-y-6">
-              {experiences.map((exp, idx) => (
+              {experiences.map((exp) => (
                 <div
                   key={exp._id}
-                  className="relative bg-neutral-900/90 border border-white/10 hover:border-white/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 transition duration-300 shadow-xl"
+                  className="bg-neutral-900/90 border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 shadow-lg"
                 >
-                  <span className="absolute top-4 right-5 text-[11px] font-mono text-neutral-600">
-                    [{String(idx + 1).padStart(2, '0')}]
-                  </span>
                   <div className="md:w-1/3">
-                    <span className="text-xs text-neutral-400 font-mono font-semibold">{exp.period}</span>
+                    <span className="text-xs text-orange-400 font-mono font-semibold">{exp.period}</span>
                     <h3 className="text-xl font-bold text-white mt-1">{exp.company}</h3>
                     <p className="text-xs text-neutral-400">{exp.role}</p>
                   </div>
-                  <div className="md:w-2/3 text-sm text-neutral-300/80 leading-relaxed pr-6 md:pr-0">
+                  <div className="md:w-2/3 text-sm text-neutral-300/80 leading-relaxed">
                     {exp.description}
                   </div>
                 </div>
@@ -231,17 +229,17 @@ export default async function HomePage() {
         <PortfolioGrid mediaItems={mediaItems} />
 
         {/* FOOTER */}
-        <footer className="border-t border-white/10 py-12 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500 font-mono">
+        <footer className="border-t border-white/10 py-12 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500">
           <p>© 2026 Adlan Aryasatya. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
-            <a href="https://linkedin.com/in/adlanaryst" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+            <a href="https://linkedin.com/in/adlanaryst" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition">
               LinkedIn
             </a>
-            <a href="https://instagram.com/adlanaryst" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+            <a href="https://instagram.com/adlanaryst" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition">
               Instagram
             </a>
-            <a href="mailto:adlanaryasatya19@gmail.com" className="hover:text-white transition">
+            <a href="mailto:adlanaryasatya19@gmail.com" className="hover:text-orange-400 transition">
               Email
             </a>
           </div>
