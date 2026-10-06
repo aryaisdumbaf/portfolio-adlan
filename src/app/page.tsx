@@ -61,13 +61,13 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* FULL MONOCHROME PURE WHITE RADIAL GLOW (Super Ringan & 0% Lag) */}
+      {/* FULL MONOCHROME PURE WHITE RADIAL GLOW & VISIBLE GRID */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Glow Putih Panggung Atas Tengah */}
         <div 
           className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] md:w-[900px] h-[500px] opacity-30"
           style={{
-            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 45%, transparent 70%)'
+            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 45%, transparent 70%)'
           }}
         />
 
@@ -75,17 +75,17 @@ export default async function HomePage() {
         <div 
           className="absolute top-[40%] -left-40 w-[500px] md:w-[700px] h-[500px] opacity-20"
           style={{
-            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%)'
+            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%)'
           }}
         />
 
-        {/* Textured Grid Guides Halus */}
+        {/* Textured Grid Guides - DITERANGKAN DAN DITEGASKAN */}
         <div 
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-25"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.18) 1px, transparent 1px)
             `,
             backgroundSize: '40px 40px'
           }}
