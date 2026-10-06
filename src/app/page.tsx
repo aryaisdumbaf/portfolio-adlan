@@ -32,6 +32,7 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
   const [selectedProject, setSelectedProject] = useState<MediaItem | null>(null)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -65,6 +66,8 @@ export default function HomePage() {
         setExperiences(expData || [])
       } catch (error) {
         console.error('Error fetching data from Sanity:', error)
+      } finally {
+        setLoading(false)
       }
     }
     fetchData()
@@ -253,28 +256,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 3. EXPERIENCES (SUDAH 100% DARI SANITY) */}
+        {/* 3. EXPERIENCES */}
         <section className="max-w-6xl mx-auto px-6 md:px-12 py-20 border-t border-white/10">
           <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase">Track Record</span>
           <h2 className="text-2xl font-bold mb-10 text-white tracking-tight">Experience & Roles</h2>
 
-          <div className="space-y-6">
-            {experiences.map((exp) => (
-              <div
-                key={exp._id}
-                className="bg-white/[0.03] border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 backdrop-blur-2xl"
-              >
-                <div className="md:w-1/3">
-                  <span className="text-xs text-orange-400 font-mono font-semibold">{exp.period}</span>
-                  <h3 className="text-xl font-bold text-white mt-1">{exp.company}</h3>
-                  <p className="text-xs text-neutral-400">{exp.role}</p>
+          {loading ? (
+            <p className="text-neutral-500 text-sm">Memuat pengalaman...</p>
+          ) : experiences.length === 0 ? (
+            <p className="text-neutral-500 text-sm">Belum ada pengalaman yang dimasukkan di Sanity Studio.</p>
+          ) : (
+            <div className="space-y-6">
+              {experiences.map((exp) => (
+                <div
+                  key={exp._id}
+                  className="bg-white/[0.03] border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 backdrop-blur-2xl"
+                >
+                  <div className="md:w-1/3">
+                    <span className="text-xs text-orange-400 font-mono font-semibold">{exp.period}</span>
+                    <h3 className="text-xl font-bold text-white mt-1">{exp.company}</h3>
+                    <p className="text-xs text-neutral-400">{exp.role}</p>
+                  </div>
+                  <div className="md:w-2/3 text-sm text-neutral-300/80 leading-relaxed">
+                    {exp.description}
+                  </div>
                 </div>
-                <div className="md:w-2/3 text-sm text-neutral-300/80 leading-relaxed">
-                  {exp.description}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* 4. SELECTED WORKS GRID */}
@@ -306,8 +315,10 @@ export default function HomePage() {
             )}
           </div>
 
-          {filteredMediaItems.length === 0 ? (
-            <p className="text-neutral-500">Belum ada karya.</p>
+          {loading ? (
+            <p className="text-neutral-500 text-sm">Memuat karya...</p>
+          ) : filteredMediaItems.length === 0 ? (
+            <p className="text-neutral-500 text-sm">Belum ada karya.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredMediaItems.map((item) => {
