@@ -54,7 +54,7 @@ export default async function HomePage() {
 
   const phoneNumber = '6281312811549'
   const defaultMessage = encodeURIComponent(
-    "Hello Arya, I saw your portfolio and I'm interested in collaborating with you."
+    "Halo Arya, Saya lihat portfolio kamu dan saya sepertinya tertarik untuk berkolaborasi dengan kamu."
   )
   const waLink = `https://wa.me/${phoneNumber}?text=${defaultMessage}`
 
@@ -124,9 +124,9 @@ export default async function HomePage() {
               Art Director & Visual Creator
             </span>
 
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
               Hello There!<br />
-              <span className="text-neutral-400 font-normal text-xl sm:text-2xl md:text-5xl">
+              <span className="text-neutral-400 font-normal text-lg sm:text-2xl md:text-3xl lg:text-4xl sm:whitespace-nowrap block mt-1">
                 General Kenobi? No, it&apos;s Arya!
               </span>
             </h1>
