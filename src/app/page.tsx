@@ -61,7 +61,7 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 select-none relative overflow-hidden">
       
-      {/* FULL MONOCHROME PURE WHITE RADIAL GLOW & VISIBLE GRID */}
+      {/* MONOCHROME GLOW + GRID + VIGNETTE + NOISE TEXTURE */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Glow Putih Panggung Atas Tengah */}
         <div 
@@ -71,23 +71,31 @@ export default async function HomePage() {
           }}
         />
 
-        {/* Glow Putih Samping Kiri */}
+        {/* Textured Grid Guides */}
         <div 
-          className="absolute top-[40%] -left-40 w-[500px] md:w-[700px] h-[500px] opacity-20"
-          style={{
-            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%)'
-          }}
-        />
-
-        {/* Textured Grid Guides - DITERANGKAN DAN DITEGASKAN */}
-        <div 
-          className="absolute inset-0 opacity-25"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(255, 255, 255, 0.18) 1px, transparent 1px)
             `,
             backgroundSize: '40px 40px'
+          }}
+        />
+
+        {/* Subtle Vignette Overlay (Menggelapkan Pinggiran Layar) */}
+        <div 
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'radial-gradient(circle at center, transparent 40%, rgba(10, 10, 10, 0.85) 100%)'
+          }}
+        />
+
+        {/* Lightweight SVG Grain / Noise Overlay (0 KB & Super Smooth) */}
+        <div 
+          className="absolute inset-0 z-20 opacity-[0.035]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
           }}
         />
       </div>
